@@ -1,0 +1,12 @@
+<div>
+    <a href="#" ui-sref="root">首页</a>
+    <a href="#" ui-sref="root.user">用户模块</a>
+    <a href="#" ui-sref="root.user.vip[1]">VIP用户模块</a>
+    <h1>{{moduleName}}</h1>
+    <a href="#" ui-sref="root.user.vip[1].vip-child.list[12]" >列表</a>
+    <a href="#" ui-sref="root.user.vip[1].vip-child.add[12]">增加</a>
+    <a href="#" ui-sref="root.user.vip[1].vip-child.del[12]">删除</a>
+    <div ui-view="content">
+
+    </div>
+</div>

@@ -1,0 +1,196 @@
+<div class="cus-list">
+    <div class="tab-content clearfix">
+        <div class="soso">
+            <input class="so-search" placeholder="搜索">
+        </div>
+        <div class="article clearfix">
+            <ul class="tab-module clearfix">
+                <li class="tab1" ng-repeat="basicList in basicLists.data">
+                    <p class="customer-num cus-height">
+                        <span class="cus1">客户编号</span> <span class="cus2">{{basicList.customerNum}}</span>
+                        <span class="cus3" ng-click="detailedBtn(basicList)"><img src="/images/customer/data.png"></span>
+                    </p>
+                    <p class="customer-name cus-height">
+                        <span class="cus1">客户姓名</span> <span class="cus4">{{::basicList.customerName}}</span>
+                    </p>
+                    <p class="customer-region cus-height">
+                        <span class="cus1">地区</span> <span class="cus4">{{::basicList.area}}</span>
+                    </p>
+                    <p class="customer-intro cus-height">
+                        <span class="cus1">第一介绍人</span> <span class="cus6"><img src="/images/customer/user2.png"></span>
+                        <span class="cus4">{{::basicList.introducer}}</span>
+                    </p>
+                    <div class="category">
+                        <p class="cate3"><i>{{::basicList.customerType|cover}}</i></p>
+                        <p class="cate3 {{::basicList.customerStatus=='POTENTIAL'?'':'cate-over2'}}">
+                            <i>{{::basicList.customerStatus|cover}}</i></p>
+                        <p class="cate4 cate2"><i>{{::basicList.customerLevelVO.name}}</i></p>
+                    </div>
+                    <p class="customer-all">
+                        <span>客户类别</span> <span>客户状态</span> <span>重要级别</span>
+                    </p>
+                    <p class="customer-pro">
+                        <span class="speed" style="width:{{basicList.relation}}%"><em>关系程度</em></span>
+                        <span class="speed2"><em>{{basicList.relation}}%</em></span>
+                    </p>
+                    <div class="frozen-all1" style="display:{{basicList.status=='CONGEAL'?'block':'none'}}">
+                        <p class="already-frozen">已冻结</p>
+                        <p class="frozen-bg"></p>
+                    </div>
+                    <!-- 编辑、冻结、关闭-->
+                    <div class="edit-all" ng-hide="modal">
+                        <p class="state {{basicList.status=='CONGEAL'?'CONGEAL':''}}">
+                            <a href="javascript:void(0)" class="s-edit" data-title="edit1" ui-sref="root.business.customer.basicinfo.edit[12]({cusNum:basicList.customerNum})">编辑</a>
+                            <a href="javascript:void(0)" class="s-frozen" ng-click="isCongeal(basicList)">冻结</a>
+                            <a href="javascript:void(0)" class="s-thaw" ng-click="isThaw(basicList)">解冻</a>
+                        </p>
+                        <p class="close" ng-click="isDeleteBtn(basicList)"><img src="/images/customer/close1.png"></p>
+                        <p class="edit-bg"></p>
+                        <div class="close-hide hs1" style="display:{{basicList._isDel?'block':'none'}}">
+                            <p class="close-text"> 是否删除这条数据</p>
+                            <a href="javascript:void(0)" class="close-yes" ng-click="deleteBtn(basicList.id)">是(Yes)</a>
+                            <a href="javascript:void(0)" class="close-no" ng-click="cancelBtn(basicList)">否(No)</a>
+                        </div>
+                        <div class="frozen-hide hs1" style="display:{{basicList._isCongeal?'block':'none'}}">
+                            <p class="close-text"> 是否冻结这条数据</p>
+                            <a href="javascript:void(0)" class="frozen-yes" ng-click="congealBtn(basicList.id)">是(Yes)</a>
+                            <a href="javascript:void(0)" class="frozen-no" ng-click="cancelBtn(basicList)">否(No)</a>
+                        </div>
+                        <div class="frozen-hide hs1" style="display:{{basicList._isThaw?'block':'none'}}">
+                            <p class="close-text"> 是否解冻这条数据</p>
+                            <a href="javascript:void(0)" class="frozen-yes" ng-click="thawBtn(basicList.id)">是(Yes)</a>
+                            <a href="javascript:void(0)" class="frozen-no" ng-click="cancelBtn(basicList)">否(No)</a>
+                        </div>
+                        <!--已经冻结的数据-->
+                    </div>
+                    <div class="sw1" style="display:{{basicList._detail?'block':'none'}}">
+                        <div class="sw-head">
+                            <p class="sw-pro">
+                                <span class="speed" style="width:{{detailed.relation}}%"><em>客户信息完成度</em></span> <span class="speed2"><em>{{detailed.relation}}%</em></span>
+                            </p>
+                            <span class="close2" ng-click="detailClose(basicList)">
+                                 <img src="/images/customer/close2.png">
+                            </span>
+                        </div>
+                        <div class="sw-body">
+                            <ul>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>性别</p>
+                                        <p>客户来源</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.customerSex|cover}}</p>
+                                        <p>{{detailed.origin}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>邮箱</p>
+                                        <p>手机号</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.cusEmail}}</p>
+                                        <p>{{detailed.tel}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>座机</p>
+                                        <p>微信</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.phone}}</p>
+                                        <p>{{detailed.weChart}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>QQ</p>
+                                        <p>行业</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.qq}}</p>
+                                        <p>{{detailed.workProfession}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>组织机构名称</p>
+                                        <p>组织规模</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.workProfession}}</p>
+                                        <p>{{detailed.origanizationSize}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>岗位</p>
+                                        <p>职级</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.workPosition}}</p>
+                                        <p>{{detailed.workLevel}}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sw-fir">
+                                        <p>职权</p>
+                                        <p>生活地区</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>
+                                            {{detailed.workRight}}
+                                        </p>
+                                        <p>{{detailed.lifeArea}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>成长地区</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>{{detailed.grouthArea}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>最近一次市场招待时间</p>
+                                        <p>最近一次更新人</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>
+                                            {{detailed.marketReceptTime}}
+                                        </p>
+                                        <p>{{detailed.modifyPersion}}</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="sw-fir">
+                                        <p>以往工作地区</p>
+                                        <p>客户启用状态</p>
+                                    </div>
+                                    <div class="sw-fir-child">
+                                        <p>
+                                            {{detailed.oldWorkPlace}}
+                                        </p>
+                                        <p>{{detailed.status|cover}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="all-module" ui-view="modals">
+
+</div>
+
+
