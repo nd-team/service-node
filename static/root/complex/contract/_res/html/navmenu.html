@@ -1,0 +1,11 @@
+<li ui-view="subNav">
+    <select class="selected" ng-change="change(myValue)" ng-init="myValue = selectNavs[0].navVal" ng-model="myValue" >
+        <option value="{{selectNav.navVal}}" ng-repeat="selectNav in selectNavs">{{selectNav.navName}}</option>
+    </select>
+    <span class="span-line"></span>
+
+</li>
+<li class="line-btn" ui-view="menu">
+    菜单栏
+
+</li>

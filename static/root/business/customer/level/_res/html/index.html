@@ -1,0 +1,25 @@
+<div class="cus-list">
+    <div class="tab-star list">
+        <div class="soso">
+            <input class="so-search" placeholder="搜索">
+        </div>
+        <div class="star-article">
+            <ul>
+                <li ng-repeat="listLevel in listLevels.data">
+                    <div class="star-one" data-id="{{listLevel.id}}">
+                        <p class="start-one-1">{{listLevel.name}}</p>
+                        <p class="start-two-2">{{listLevel.remark}}</p>
+                    </div>
+                    <div class="edit-all" ng-hide="levelEditModal">
+                        <p class="state"><a href="javascript:void(0)" class="s-edit">编辑</a></p>
+                        <p class="edit-bg"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="all-module" ui-view="modals">
+
+</div>
