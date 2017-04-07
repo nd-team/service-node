@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular-cookie": "^4.1.0",
+    
     "koa": "^1.2.2",
     "koa-body": "^1.5.0",
     "koa-bodyparser": "^2.2.0",
@@ -23,7 +23,7 @@
     "koa-static-cache": "^4.0.0",
     "koa-static-server": "^0.1.8",
     "koa-stream": "^0.2.0",
-    "ng-verify": "^1.4.9-b",
+   
     "request-promise": "^4.2.0"
   },
   "devDependencies": {

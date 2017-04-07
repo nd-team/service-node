@@ -11,6 +11,7 @@ app.controller('basicinfoAddCtrl', function($scope, $state, $rootScope, basicinf
     basicinfoServer.generateNumber().then(function(response){
         $scope.generateNumber = response.data.data.customerNum;
     });
+
     function getScrollTop(){
         var scrollTop = 0;
         if(document.documentElement && document.documentElement.scrollTop){
@@ -52,9 +53,11 @@ app.controller('basicinfoAddCtrl', function($scope, $state, $rootScope, basicinf
             lifeArea : vm.addLifeArea,
             workPosition : vm.addWorkPosition,
             oldWorkPlace : vm.addOldWorkPlace,
-            workRight : vm.addWorkRight
+            workRight : vm.addWorkRight,
+            relation:angular.element('#title0').text()
         };
-        console.info(data);
+
+
         basicinfoServer.addCustomerbaseinfo(data).then(function(response){
 
             if(response.data.code == 0){

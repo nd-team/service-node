@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'oc.lazyLoad']);
+var app = angular.module('app', ['ui.router', 'oc.lazyLoad','angular-loading-bar','toastr']);
 app.controller('root', function ($rootScope, $urlRouter, $ocLazyLoad, $location) {
     $rootScope.$on('$locationChangeSuccess', function () {//url地扯改变或者刷新
         console.info('refresh');
@@ -164,4 +164,60 @@ app.config(function ($provide, $urlRouterProvider) {
         return $delegate;
     });
 
-});
+}).config(['$httpProvider', function($httpProvider){
+    $httpProvider.interceptors.push(HttpInterceptor);
+}]).config(function(toastrConfig) {
+    angular.extend(toastrConfig, {
+        allowHtml: false,
+        closeButton: true,
+        closeHtml: '<button>&times;</button>',
+        extendedTimeOut: 1000,
+        iconClasses: {
+            error: 'toast-error',
+            info: 'toast-info',
+            success: 'toast-success',
+            warning: 'toast-warning'
+        },
+        messageClass: 'toast-message',
+        onHidden: null,
+        onShown: null,
+        onTap: null,
+        progressBar: false,
+        tapToDismiss: true,
+
+        timeOut: 5000,
+        titleClass: 'toast-title',
+        toastClass: 'toast'
+    });
+});;
+
+app.factory('HttpInterceptor', ['$q', HttpInterceptor]);
+
+function HttpInterceptor($q,toastr){
+
+    return {
+        request : function(config){
+            return config;
+        },
+        requestError : function(err){
+            console.info(err);
+            return $q.reject(err);
+        },
+        response : function(res){
+            return res;
+        },
+        responseError : function(err){
+            if(-1 === err.status){
+                // 远程服务器无响应
+            } else if(500 === err.status){
+                // 处理各类自定义错误
+            } else if(501 === err.status){
+                // ...
+            }else if(404===err.status){
+                toastr.error('服务器出错，请联系管理员', '温馨提示');
+            }
+            console.info(err);
+            return $q.reject(err);
+        }
+    };
+};

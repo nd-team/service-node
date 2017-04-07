@@ -10,10 +10,10 @@ module.exports = function(){
     router.post('/user/login', function*(){
         var $self = this;
         var loginData = this.request.body;
-        console.info(loginData);
         yield (server().userLogin(loginData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
+                $self.cookies.set('token', responseText.data, {maxAge : 1000 * 60 * 60 * 24 * 7});
                 $self.body = responseText;
             }).catch((error) =>{
                 if(error.error && error.error.code && error.error.code == 'ETIMEDOUT'){

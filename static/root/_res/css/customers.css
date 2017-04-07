@@ -1225,7 +1225,6 @@ margin-top: 20px;
 .tab-module .tab1 .customer-pro .speed {
 display: inline-block;
 height: 22px;
-width: 50%;
 background: -webkit-linear-gradient(left, #1da5f2, #47bfba, #58c5b6, #99cfcb);
 background: linear-gradient(to right, #1da5f2, #47bfba, #58c5b6, #99cfcb);
 background-color: #1da5f2;
@@ -1706,7 +1705,6 @@ margin-top: 20px;
 .cus-list .article .tab-module .tab1 .customer-pro .speed {
 display: inline-block;
 height: 22px;
-width: 50%;
 background: -webkit-linear-gradient(left, #1da5f2, #47bfba, #58c5b6, #99cfcb);
 background: linear-gradient(to right, #1da5f2, #47bfba, #58c5b6, #99cfcb);
 background-color: #1da5f2;

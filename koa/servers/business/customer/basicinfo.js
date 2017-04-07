@@ -8,7 +8,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/listCustomerBaseInfo',
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/listCustomerBaseInfo',
             headers : {
                 // token : token
             }
@@ -19,7 +19,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/listCustomerLevel',
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/listCustomerLevel',
             headers : {
                 // token : token
             }
@@ -30,7 +30,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/generateNumber',
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/generateNumber',
             headers : {
                 // token : token
             }
@@ -41,7 +41,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/add',
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/add',
             form:argvs,
             headers : {
                 // token : token
@@ -53,7 +53,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/edit',
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/edit',
             form:argvs,
             headers : {
                 // token : token
@@ -65,7 +65,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
         };
         return request(options);
     };
@@ -73,7 +73,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/congeal/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/congeal/'+argvs.id+'?userToken='+argvs.userToken,
         };
         return request(options);
     };
@@ -81,7 +81,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/thaw/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/thaw/'+argvs.id+'?userToken='+argvs.userToken,
         };
         return request(options);
     };
@@ -90,7 +90,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/getCustomer?customerNum='+argvs.customerNum,
+            uri : config()['customer']['rurl'] + '/customerbaseinfo/v1/getCustomer?customerNum='+argvs.customerNum,
             headers : {
                 // token : token
             }
@@ -103,7 +103,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/listCustomerLevel',
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/listCustomerLevel',
             headers : {
                 // token : token
             }
@@ -116,7 +116,7 @@ module.exports = function(){
         var options = {
             method : 'POST',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/add',
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/add',
             form : argvs,
             headers : {
                 // token : token
@@ -129,7 +129,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
 
         };
         return request(options);
@@ -139,7 +139,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/getCustomerLevel?name='+argvs.name,
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/getCustomerLevel?name='+argvs.name,
 
         };
         return request(options);
@@ -150,7 +150,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/edit',
+            uri : config()['customer']['rurl'] + '/customerlevel/v1/edit',
             form : argvs,
             headers : {
                 // token : token
@@ -163,7 +163,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerdetail/v1/listCustomerDetail',
+            uri : config()['customer']['rurl'] + '/customerdetail/v1/listCustomerDetail',
             headers : {
             }
         };
@@ -174,7 +174,7 @@ module.exports = function(){
         var options = {
             method : 'GET',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/cusemail/v1/listCusEmail',
+            uri : config()['customer']['rurl'] + '/cusemail/v1/listCusEmail',
             headers : {
                 // token : token
             }

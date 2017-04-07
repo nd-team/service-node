@@ -4,7 +4,7 @@ var app = angular.module('basicinfo', [
     }
 
 ]);
-app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer,ipCookie){
+app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer,ipCookie,toastr){
     $scope.modal = true;
 
 
@@ -40,7 +40,8 @@ app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer,i
                 if(response.data.code==0){
                     event._isDel = false;
                     $scope.modal = true;
-                    event._deled = true
+                    event._deled = true;
+                    toastr.info('删除成功', '温馨提示');
                 }else if(response.data.code==403){
                     $rootScope.login()
                 }

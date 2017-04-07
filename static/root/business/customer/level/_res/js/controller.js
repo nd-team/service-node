@@ -3,7 +3,7 @@ var app = angular.module('level', [
         files : ['root/business/customer/level/_res/js/service.js']
     }
 ]);
-app.controller('levelCtrl', function ($scope,$http,$state,$rootScope,levelServer,ipCookie) {
+app.controller('levelCtrl', function ($scope,$http,$state,$rootScope,levelServer,ipCookie,toastr) {
     levelServer.listLevel().then(function(response){
         $scope.listLevels = response.data
     });
@@ -25,7 +25,8 @@ app.controller('levelCtrl', function ($scope,$http,$state,$rootScope,levelServer
                 if(response.data.code==0){
                     event._isDel = false;
                     $scope.modal = true;
-                    event._deled = true
+                    event._deled = true;
+                    toastr.info('删除成功', '温馨提示');
                 }else if(response.data.code==403){
                     $rootScope.login()
                 }
