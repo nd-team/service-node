@@ -1,0 +1,118 @@
+<style>
+    .register{
+        width:60%;
+        position:fixed;
+        background:#f2f2f2;
+        z-index:99;
+        left:50%;
+        margin-left:-30%;
+        top:100px;
+    }
+    .register-body{
+        width:640px;
+        height:530px;
+        margin:100px auto;
+        background:url("/images/login/registerbg.png") no-repeat;
+        background-size:100% 100%;
+    }
+    .reg-title{
+        text-align:center;
+        padding-top:60px;
+        font-size:18px;
+        color:#7e8682;
+    }
+    form{
+        width:400px;
+        margin:0 auto;
+    }
+    .form-group{
+        margin:35px 20px 35px 0;
+        border:1px solid #f0f0f0;
+        height:40px;
+        line-height:40px;
+        padding:0 10px;
+        color:#8d928c;
+    }
+    .form-group label{
+        display:inline-block;
+        width:70px;
+    }
+    .form-group input{
+        font-size:16px;
+        width:75%;
+    }
+    .password{
+        background:url("/images/login/reg-pas.png") no-repeat right 5px center;
+    }
+    .repassword{
+        background:url("/images/login/reg-rpas.png") no-repeat right 5px center;
+    }
+    .readed a{
+        color:#7e8682;
+        font-size:12px;
+    }
+    .register-btn{
+        background:url("/images/login/reg-btn.png") no-repeat;
+        width:234px;
+        height:85px;
+        margin:10px auto;
+        display:flex;
+        justify-content:center;
+    }
+    .register-btn button{
+        width:100%;
+        background:none;
+        height:50px;
+        color:#fff;
+        font-size:16px;
+    }
+    .successBox{ display:none;}
+    .reg-success{
+        width:640px;
+        height:300px;
+        background:url("/images/login/registerSucc.png") no-repeat;
+        background-size:100% 100%;
+        margin:100px auto;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+    }
+    .reg-success a{
+        margin:40px;
+    }
+    .isSuccess .register-body{ display:none;}
+    .isSuccess .successBox{ display:block;}
+</style>
+<div class="register {{resSuccess?'isSuccess':''}}">
+    <div class="register-body">
+        <p class="reg-title">填写下您的资料，来和我们互动吧~~</p>
+        <form verify-scope="tipStyle: 1" name="register-form">
+            <div class="form-group username">
+                <label for="register-name">用户名</label>
+                <input type="text" ng-verify="{}" id="register-name" ng-model="regUsername" ng-blur="existUsername()" ng-focus="regUserFocus()">
+            </div>
+            <div class="form-group password">
+                <label for="register-password">密码</label> <input type="password" ng-verify="{}"   id="register-password" ng-model="regPassword">
+            </div>
+            <div class="form-group repassword">
+                <label for="register-rePassword">重复密码</label> <input type="password" ng-verify="{}" id="register-rePassword" ng-model="regRepassword">
+            </div>
+            <div class="readed">
+                <a href="javascript:void(0)">阅读并同意《业务市场化平台注册协议》《隐私政策》</a>
+
+            </div>
+            <div class="register-btn">
+                <button ng-click="registerBtn()" ng-verify="{control:'register-form'}">注 册</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="successBox">
+        <div class="reg-success">
+            <p>注册成功</p>
+            <a href="javascript:void(0)" ui-sref="root" ng-click="close()">立即返回界面</a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,20 @@
+<div class="edit-module">
+    <div class="edit-box" verify-scope="tipStyle: 1">
+        <i class="close" ui-sref="root.business.customer.level"></i>
+        <div class="edit-pop">
+            <ul class="pop-input">
+                <li data-id="{{getLevel.id}}">
+                    <label>客户类别</label> <input type="text" ng-model="getLevel.name" ng-verify="{}">
+                </li>
+                <li>
+                    <label>定义</label>
+                    <input type="text"  class="pt2" ng-model="getLevel.remark" ng-verify="{}">
+                </li>
+            </ul>
+            <div class="modify">
+                <button type="button" class="modify-btn" ng-verify="{control:'myform'}" ng-click="levelEditFun()">编辑</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modulebg"></div>

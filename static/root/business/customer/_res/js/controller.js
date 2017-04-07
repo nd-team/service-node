@@ -13,8 +13,8 @@ app.controller('customerCtrl', function ($scope,$state,$http) {
             $state.go('root.business.customer.basicinfo')
         }else if(val == 'level'){
             $state.go('root.business.customer.level')
-        }else if(val == 'detail'){
-            $state.go('root.business.customer.detail')
+        }else if(val == 'detailed'){
+            $state.go('root.business.customer.detailed')
         }else if(val=='email'){
             $state.go('root.business.customer.email')
         }

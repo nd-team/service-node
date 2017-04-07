@@ -1,18 +1,18 @@
 <div class="edit-module">
-    <div class="edit-box">
-        <i class="close"></i>
+    <div class="edit-box" verify-scope="tipStyle: 1">
+        <i class="close" ui-sref="root.business.customer.level"></i>
         <div class="edit-pop">
             <ul class="pop-input">
                 <li>
-                    <label>可会类别</label> <input type="text">
+                    <label>可会类别</label> <input type="text" ng-model="levelAddName" ng-verify="{}">
                 </li>
                 <li>
                     <label>定义</label>
-                    <input type="text"  class="pt2">
+                    <input type="text"  class="pt2" ng-model="levelAddRemark" ng-verify="{}">
                 </li>
             </ul>
             <div class="modify">
-                <button type="button" class="modify-btn" >添加</button>
+                <button type="button" class="modify-btn" ng-verify="{control:'myform'}" ng-click="levelAddFun()">添加</button>
             </div>
         </div>
     </div>

@@ -5,14 +5,23 @@
         </div>
         <div class="star-article">
             <ul>
-                <li ng-repeat="listLevel in listLevels.data">
+                <li ng-repeat="listLevel in listLevels.data" ng-hide="listLevel._deled">
                     <div class="star-one" data-id="{{listLevel.id}}">
                         <p class="start-one-1">{{listLevel.name}}</p>
                         <p class="start-two-2">{{listLevel.remark}}</p>
                     </div>
-                    <div class="edit-all" ng-hide="levelEditModal">
-                        <p class="state"><a href="javascript:void(0)" class="s-edit">编辑</a></p>
+                    <div class="edit-all" ng-hide="modal">
+                        <p class="state">
+                            <a href="javascript:void(0)" class="s-edit"  ui-sref="root.business.customer.level.edit[12]({name:listLevel.name})">编辑</a>
+                        </p>
+                        <p class="close" ng-click="isDeleteBtn(listLevel)"><img src="/images/customer/close1.png"></p>
                         <p class="edit-bg"></p>
+                        <div class="close-hide hs1" style="display:{{listLevel._isDel?'block':'none'}}; top: 5px;">
+                            <p class="close-text"> 是否删除这条数据</p>
+                            <a href="javascript:void(0)" class="close-yes" ng-click="deleteBtn(listLevel.id)">是(Yes)</a>
+                            <a href="javascript:void(0)" class="close-no" ng-click="cancelBtn(listLevel)">否(No)</a>
+                        </div>
+                        <!--已经冻结的数据-->
                     </div>
                 </li>
             </ul>

@@ -1,8 +1,18 @@
 var app = angular.module('rootModule',[]);
-app.factory('rootSer',function () {
+app.factory('rootSer',function ($http) {
     return {
-        testMethod : function () {
-            console.info('测试方法')
-        }
+        login:login,
+        register:register,
+        existUsername:existUsername
     };
+
+    function login(data){
+        return $http.post('/user/login',data);
+    }
+    function register(data){
+        return $http.post('/user/register',data);
+    }
+    function existUsername(data){
+        return $http.post('/user/existUsername',data);
+    }
 });

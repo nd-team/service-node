@@ -5,6 +5,7 @@ app.config(function ($provide, $stateProvider) {
         views: {
             "content@root.business.customer": {
                 templateUrl: "root/business/customer/basicinfo/_res/html/index.html",
+                cache:false,
                 controller: "basicinfoCtrl"
             },"menu@root.business.customer":{
                 templateUrl: "root/business/customer/basicinfo/_res/html/menu.html",

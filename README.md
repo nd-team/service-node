@@ -1,2 +1,2 @@
-# service-node
-业务市场化平台-node
+# dynamic-modules
+angularjs多模块大型web应用设计,$oclazyload与ui-router结合使用

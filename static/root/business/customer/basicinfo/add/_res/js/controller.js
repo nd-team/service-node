@@ -1,17 +1,36 @@
-var app = angular.module('basicinfoAdd',[
+var app = angular.module('basicinfoAdd', [
     {
         files : ['root/business/customer/basicinfo/_res/js/service.js']
     }
 ]);
-app.controller('basicinfoAddCtrl',function ($scope,$state,basicinfoServer) {
+app.controller('basicinfoAddCtrl', function($scope, $state, $rootScope, basicinfoServer, ipCookie){
+
+    $scope.addCustomerSex = "MAN";
+
     //自动客户编号
-        basicinfoServer.generateNumber().then(function(response){
-            $scope.generateNumber = response.data.data.customerNum;
-        });
+    basicinfoServer.generateNumber().then(function(response){
+        $scope.generateNumber = response.data.data.customerNum;
+    });
+    function getScrollTop(){
+        var scrollTop = 0;
+        if(document.documentElement && document.documentElement.scrollTop){
+            scrollTop = document.documentElement.scrollTop;
+        }
+        else if(document.body){
+            scrollTop = document.body.scrollTop;
+        }
+        $scope.modalTop=scrollTop+100+ "px";
+        return scrollTop;
+    }
+    getScrollTop();
+
+
     //添加列表
     $scope.basicAddFun = function(){
         var vm = $scope;
+        var token = ipCookie('token');
         var data = {
+            userToken : token,
             customerNum : vm.generateNumber,
             customerName : vm.addCustomerName,
             area : vm.addArea,
@@ -41,6 +60,9 @@ app.controller('basicinfoAddCtrl',function ($scope,$state,basicinfoServer) {
             if(response.data.code == 0){
                 vm.addCustomerbaseinfo = response.data;
                 $state.go('root.business.customer.basicinfo');
+                window.location.reload()
+            } else if(response.data.code == 403){
+                $rootScope.login()
             } else {
                 vm.addMsg = response.data.msg
             }

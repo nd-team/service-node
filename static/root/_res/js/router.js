@@ -7,7 +7,8 @@ app.config(function ($provide, $stateProvider) {
                 templateUrl: "root/_res/html/content.html",
                 controller: "rootCtrl"
             },"header@root": {
-                templateUrl: "root/_res/html/header.html"
+                templateUrl: "root/_res/html/header.html",
+                controller: "headerCtrl"
             }
         }
     })
