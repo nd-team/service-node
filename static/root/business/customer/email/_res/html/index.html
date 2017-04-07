@@ -1,0 +1,56 @@
+<div class="cus-list">
+    <!-- 列表、添加、删除.汇总-->
+    <div class="tab-content clearfix list">
+        <div class="soso">
+            <input class="so-search" placeholder="搜索">
+        </div>
+        <div class="article clearfix">
+            <ul class="email-all clearfix">
+                <li class="email1" ng-repeat="listEmail in listEmails.data">
+                    <p class="emil1">
+                        <span class="email-num">{{$index+1}}</span>
+                        <span class="email-name">{{listEmail.work}}</span>
+                    </p>
+                    <p class="create-tit">
+                        <span class="tit1">创建/修改人</span>
+                        <span class="tit2">{{listEmail.createPersion}}</span>
+                        <span class="tit3">{{listEmail.modifyTime}}</span>
+                    </p>
+                    <ul class="create-per clearfix">
+                        <li class="clearfix">
+                            <span class="cre1">上次发送时间</span>
+                            <p class="times">{{listEmail.lastSendTime}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="cre1">备注</span>
+                            <p class="times">{{listEmail.remark}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="cre1">发送间隔</span>
+                            <p class="times">{{listEmail.sendNumAndUnit}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="cre1">汇总间隔</span>
+                            <p class="times">{{listEmail.customerCollectUnit|cover}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="cre1">发送对象</span>
+                            <p class="times">{{listEmail.sendObject}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="cre1">状态</span>
+                            <p class="times">{{listEmail.status|cover}}</p>
+                        </li>
+                    </ul>
+                    <p class="create-stash">
+                        <a href="javascript:void(0)" class="s-edit" data-title="edit1">编辑</a>
+                        <a href="javascript:void(0)" class="s-frozen">冻结</a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="all-module" ui-view="modals">
+</div>

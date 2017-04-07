@@ -148,11 +148,25 @@ z-index: 10;
 }
 
 header .search-right .header-pic {
-width: 45px;
 height: 45px;
 border-radius: 50%;
 float: right;
 margin: 0 36px;
+
+}
+header .search-right .header-pic .user{
+display:none;
+float:left;
+width:60px;
+text-align:center;
+}
+header .search-right .header-pic.logined .user{
+display:block;
+}
+header .search-right .header-pic.logined .user:hover .logout{ display:block;}
+header .search-right .header-pic.logined .user .logout,header .search-right .header-pic.logined .register{ display:none;}
+header .search-right .header-pic.logined .login{
+display:none;
 }
 
 .content {
@@ -184,7 +198,7 @@ position: relative;
 
 .content nav .nav-left li:hover > .nav-hover {
 display: block;
-z-index: 2000;
+z-index: 110;
 }
 
 .content nav .nav-left li.active {
@@ -205,12 +219,18 @@ position: absolute;
 left: 208px;
 bottom: 0;
 top: 0;
-z-index: 2000;
+z-index: 100;
 display: none;
 }
 
 .content nav .nav-left li .nav-hover.hover-blue {
 background-color: #066dc2;
+}
+.content nav .nav-left li .nav-hover.hover-red {
+background-color: #f32f4e;
+}
+.content nav .nav-left li .nav-hover.hover-green {
+background-color: #47dbcd;
 }
 
 .content nav .nav-left li .nav-hover.hover-blue .company-nav {
@@ -222,6 +242,15 @@ width: 210px;
 position: fixed;
 top: 62px;
 bottom: 0;
+}
+.content nav .nav-left li .nav-hover .company-nav.blue{
+background-color: #066dc2;
+}
+.content nav .nav-left li .nav-hover .company-nav.green{
+background-color: #47dbcd;
+}
+.content nav .nav-left li .nav-hover .company-nav.red{
+background-color: #f32f4e;
 }
 
 .content nav .nav-left li .nav-hover .company-nav .company-plan {
@@ -1101,6 +1130,7 @@ z-index: 0;
 }
 
 .tab-module .tab1 .category p {
+
 position: relative;
 display: inline-block;
 width: 40px;
@@ -1171,15 +1201,19 @@ margin-top: 5px;
 .tab-module .tab1 .customer-all span {
 font-size: 12px;
 color: #999;
+width:31%;
+display:inline-block;
+text-align:center;
+text-indent:20px;
 }
 
-.tab-module .tab1 .customer-all span:nth-of-type(1) {
-margin-left: 13%;
-}
+/*.tab-module .tab1 .customer-all span:nth-of-type(1) {*/
+/*margin-left: 13%;*/
+/*}*/
 
-.tab-module .tab1 .customer-all span:nth-of-type(2) {
-margin: 0 17%;
-}
+/*.tab-module .tab1 .customer-all span:nth-of-type(2) {*/
+/*margin: 0 17%;*/
+/*}*/
 
 .tab-module .tab1 .customer-pro {
 height: 22px;
@@ -1224,7 +1258,7 @@ width: 1020px;
 position: absolute;
 z-index: 100;
 height: 800px;
-top: 20%;
+/*top: 20%;*/
 left: 55%;
 margin-left: -500px;
 }
@@ -1457,7 +1491,6 @@ height: auto;
 border: 1px solid #066dc2;
 margin-top: 35px;
 background-color: #fff;
-display: none;
 }
 
 .and-content .summary-list li {
@@ -1582,6 +1615,7 @@ z-index: 0;
 }
 
 .cus-list .article .tab-module .tab1 .category p {
+text-align:center;
 position: relative;
 display: inline-block;
 width: 40px;
@@ -1654,13 +1688,13 @@ font-size: 12px;
 color: #999;
 }
 
-.cus-list .article .tab-module .tab1 .customer-all span:nth-of-type(1) {
-margin-left: 13%;
-}
+/*.cus-list .article .tab-module .tab1 .customer-all span:nth-of-type(1) {*/
+/*margin-left: 13%;*/
+/*}*/
 
-.cus-list .article .tab-module .tab1 .customer-all span:nth-of-type(2) {
-margin: 0 17%;
-}
+/*.cus-list .article .tab-module .tab1 .customer-all span:nth-of-type(2) {*/
+/*margin: 0 17%;*/
+/*}*/
 
 .cus-list .article .tab-module .tab1 .customer-pro {
 height: 22px;
@@ -1834,6 +1868,7 @@ display: block;
 }
 
 .cus-list .sw1 {
+right:-30px;
 width: 415px;
 border: 1px solid #bbc7d2;
 box-shadow: 0 0 8px rgba(111, 110, 110, 0.5);
@@ -1841,7 +1876,7 @@ background-color: white;
 margin-left: -40px;
 position: absolute;
 z-index: 4;
-top: 0;
+top: 50px;
 }
 
 .cus-list .sw1 .sw-head {
@@ -1939,21 +1974,7 @@ width: 100%;
 line-height: 25px;
 }
 
-.cus-list .sw1:nth-of-type(1n+0) {
-left: 16.5%;
-}
 
-.cus-list .sw1:nth-of-type(2n+0) {
-left: 36.5%;
-}
-
-.cus-list .sw1:nth-of-type(3n+0) {
-left: 62%;
-}
-
-.cus-list .sw1:nth-of-type(4n+0) {
-left: 65%;
-}
 
 .cus-list .tab-star {
 width: 83%;
@@ -1971,7 +1992,6 @@ width: 100%;
 position: relative;
 width: 23.5%;
 height: 99px;
-overflow: hidden;
 float: left;
 color: #252525;
 box-shadow: 0 0 10px rgba(111, 110, 110, 0.5);
@@ -2556,6 +2576,7 @@ margin-left: 208px;
 margin-bottom: 15px;
 background: url("/images/customer/fot.png") center no-repeat;
 }
+
 
 
 

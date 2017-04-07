@@ -1,0 +1,46 @@
+<div class="cus-list">
+    <div class="tab-star list">
+        <div class="soso">
+            <input class="so-search" placeholder="搜索">
+        </div>
+        <div class="article clearfix">
+        <ul class="tab-module clearfix">
+        <li class="tab1" ng-repeat="listDetail in listdetails.data">
+            <p class="customer-num cus-height">
+                <span class="cus1">客户编号</span>
+                <span class="cus2" >{{listDetail.customerNum}}</span>
+                <span class="cus3"><img src="/images/customer/data.png"></span>
+            </p>
+            <p class="customer-region cus-height">
+                <span class="cus1">地区</span>
+                <span class="cus4" >{{listDetail.area}}</span>
+            </p>
+            <p class="customer-intro cus-height">
+                <span class="cus1">第一介绍人</span>
+                <span class="cus6" ><img src="/images/customer/male.png"></span>
+                <span class="cus4" >{{listDetail.customerNum}}</span>
+            </p>
+            <div class="category">
+                <p class="cate3"><i>工作经历</i></p>
+                <p class="cate3 "><i>求学经历</i></p>
+                <p class="cate4 cate2"><i>爱好</i></p>
+            </div>
+            <p class="customer-all">
+                <span>World</span>
+                <span>School</span>
+                <span>Hobby</span>
+            </p>
+            <p class="customer-pro">
+                <span class="speed"><em>关系程度</em></span>
+                <span class="speed2"><em>60%</em></span>
+            </p>
+        </li>
+
+        </ul>
+        </div>
+    </div>
+
+</div>
+<div class="all-module" ui-view="modals">
+
+</div>

@@ -49,7 +49,7 @@ app.controller('basicinfoEditCtrl',function ($scope,$state,$stateParams,basicinf
             if(response.data.code == 0){
                 $state.go('root.business.customer.basicinfo');
                 $scope.modal = true;
-                $scope.$emit('basicMenuCtrlModal', $scope.modal)
+                $scope.$emit('menuCtrlModal', $scope.modal)
 
             } else {
                 vm.addMsg = response.data.msg

@@ -4,8 +4,10 @@ var app = angular.module('basicinfo', [
     }
 
 ]);
-app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer){
+app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer,ipCookie){
     $scope.modal = true;
+
+
 
     //监听到父Ctrl后改变事件
     $scope.$on("editModal", function(event, msg){
@@ -28,61 +30,19 @@ app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer){
 
 
 
-
-
-    //添加列表
-    $scope.basicAddFun = function(){
-        var vm = $scope;
-        var data = {
-            customerNum : vm.generateNumber,
-            customerName : vm.addCustomerName,
-            area : vm.addArea,
-            customerType : vm.addCustomerType,
-            customerSex : vm.addCustomerSex,
-            customerStatus : vm.addCustomerStatus,
-            origin : vm.addOrigin,
-            customerLevelName : vm.addCustomerLevelName,
-            cusEmail : vm.addCusEmail,
-            introducer : vm.addIntroducer,
-            phone : vm.addPhone,
-            tel : vm.addTel,
-            qq : vm.addqq,
-            weChart : vm.addWeChart,
-            origanizion : vm.addOriganizion,
-            workProfession : vm.addWorkProfession,
-            workLevel : vm.addWorkLevel,
-            origanizationSize : vm.addoRiganizationSize,
-            lifeArea : vm.addLifeArea,
-            workPosition : vm.addWorkPosition,
-            oldWorkPlace : vm.addOldWorkPlace,
-            workRight : vm.addWorkRight
-
-        };
-        console.info(data);
-        basicinfoServer.addCustomerbaseinfo(data).then(function(response){
-
-            if(response.data.code == 0){
-                vm.addCustomerbaseinfo = response.data;
-                vm.modulebg = true;
-                vm.addModalTable = true;
-            } else {
-                vm.addMsg = response.data.msg
-            }
-
-
-        });
-    };
-
     //是否删除列表
     $scope.isDeleteBtn = function(event){
         event._isDel = true;
         var vm = $scope;
         vm.deleteBtn = function(cusId){
-            var delData={id:cusId};
+            var delData={id:cusId,userToken:ipCookie('token')};
             basicinfoServer.delCustomerbaseinfo(delData).then(function(response){
                 if(response.data.code==0){
                     event._isDel = false;
                     $scope.modal = true;
+                    event._deled = true
+                }else if(response.data.code==403){
+                    $rootScope.login()
                 }
             })
         }
@@ -94,12 +54,14 @@ app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer){
         event._isCongeal = true;
         var vm = $scope;
         vm.congealBtn = function(cusId){
-            var congealData={id:cusId};
+            var congealData={id:cusId,userToken:ipCookie('token')};
             basicinfoServer.congealCustomerbaseinfo(congealData).then(function(response){
                 if(response.data.code==0){
                     event._isCongeal = false;
                     $scope.modal = true;
                     event.status = 'CONGEAL';
+                }else if(response.data.code==403){
+                    $rootScope.login();
                 }
             })
         }
@@ -110,13 +72,15 @@ app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer){
         event._isThaw = true;
         var vm = $scope;
         vm.thawBtn = function(cusId){
-            var thawData={id:cusId};
+            var thawData={id:cusId,userToken:ipCookie('token')};
             basicinfoServer.thawCustomerbaseinfo(thawData).then(function(response){
                 console.info(response);
                 if(response.data.code==0){
                     event._isThaw = false;
                     $scope.modal = true;
                     event.status = ''
+                }else if(response.data.code==403){
+                    $rootScope.login();
                 }
             })
         }
@@ -125,19 +89,20 @@ app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer){
 
     //取消冻结或删除
     $scope.cancelBtn = function(event){
-
         $scope.modal = true;
         event._isDel = false;
+        event._isCongeal = false;
     };
 
     //查看详情
     $scope.detailedBtn = function(event){
         event._detail = true;
-        var cusNum = {customerNum:event.customerNum};
+        var cusNum = {customerNum:event.customerNum,userToken:ipCookie('token')};
         basicinfoServer.getCustomers(cusNum).then(function(response){
             if(response.data.code ==0){
                 $scope.detailed = response.data.data;
-
+            }else if(response.data.code ==403){
+                $rootScope.login()
             }
         })
 
@@ -152,7 +117,7 @@ app.controller('basicinfoCtrl', function($scope, $http,$state, basicinfoServer){
     $scope.basicEdit = function(){
         $scope.modal = false;
         //向父Ctrl传递事件
-        $scope.$emit('basicMenuCtrlModal', $scope.modal)
+        $scope.$emit('menuCtrlModal', $scope.modal)
 
     }
 

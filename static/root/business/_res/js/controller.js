@@ -5,7 +5,7 @@ app.controller('businessCtrl', function ($scope,$state) {
     }
 
     //父 Ctrl 监听到事件，向下广播
-    $scope.$on('basicMenuCtrlModal',function(event,msg){
+    $scope.$on('menuCtrlModal',function(event,msg){
         $scope.$broadcast('editModal',msg)
     });
 

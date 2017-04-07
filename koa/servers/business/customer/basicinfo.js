@@ -65,7 +65,7 @@ module.exports = function(){
         var options = {
             method : 'DELETE',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/delete/'+argvs.id,
+            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
         };
         return request(options);
     };
@@ -73,7 +73,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/congeal/'+argvs.id,
+            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/congeal/'+argvs.id+'?userToken='+argvs.userToken,
         };
         return request(options);
     };
@@ -81,7 +81,7 @@ module.exports = function(){
         var options = {
             method : 'PUT',
             timeout : 3000,
-            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/thaw/'+argvs.id,
+            uri : config()['customer']['rurl'] + '/customer/customerbaseinfo/v1/thaw/'+argvs.id+'?userToken='+argvs.userToken,
         };
         return request(options);
     };
@@ -111,7 +111,76 @@ module.exports = function(){
         return request(options);
     };
 
+    //添加
+    this.customerlevelAdd = function(argvs){
+        var options = {
+            method : 'POST',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/add',
+            form : argvs,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    //删除
+    this.customerlevelDelete = function(argvs){
+        var options = {
+            method : 'DELETE',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/delete/'+argvs.id+'?userToken='+argvs.userToken,
 
+        };
+        return request(options);
+    };
+    //单个客户等级信息
+    this.getCustomerLevelinfo = function(argvs){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/getCustomerLevel?name='+argvs.name,
+
+        };
+        return request(options);
+    };
+
+    //编辑客户信息
+    this.customerlevelEdit = function(argvs){
+        var options = {
+            method : 'PUT',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerlevel/v1/edit',
+            form : argvs,
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
+    //客户详细信息
+    this.listCustomerDetail = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/customerdetail/v1/listCustomerDetail',
+            headers : {
+            }
+        };
+        return request(options);
+    };
+    //客户邮箱
+    this.listCusEmail = function(){
+        var options = {
+            method : 'GET',
+            timeout : 3000,
+            uri : config()['customer']['rurl'] + '/customer/cusemail/v1/listCusEmail',
+            headers : {
+                // token : token
+            }
+        };
+        return request(options);
+    };
 
     return this;
 }

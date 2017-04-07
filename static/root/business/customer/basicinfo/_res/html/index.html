@@ -5,9 +5,9 @@
         </div>
         <div class="article clearfix">
             <ul class="tab-module clearfix">
-                <li class="tab1" ng-repeat="basicList in basicLists.data">
+                <li class="tab1" ng-repeat="basicList in basicLists.data" ng-hide="basicList._deled">
                     <p class="customer-num cus-height">
-                        <span class="cus1">客户编号</span> <span class="cus2">{{basicList.customerNum}}</span>
+                        <span class="cus1">客户编号</span> <span class="cus2">{{::basicList.customerNum}}</span>
                         <span class="cus3" ng-click="detailedBtn(basicList)"><img src="/images/customer/data.png"></span>
                     </p>
                     <p class="customer-name cus-height">

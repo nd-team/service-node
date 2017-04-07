@@ -1,4 +1,4 @@
-<div class="edit-box edit1"  verify-scope="tipStyle: 1">
+<div class="edit-box edit1"  verify-scope="tipStyle: 1" style="top:{{modalTop}};">
     <i class="close" ui-sref="root.business.customer.basicinfo"></i>
     <div class="edit-pop">
         <ul class="pop-input">
@@ -14,27 +14,22 @@
                 <label>地区</label>
                 <input type="text"class="edit-pt" placeholder="请输入地区（必填）" ng-model="addArea" ng-verify="{}">
             </li>
-            <!--<li>-->
-                <!--<label>性别</label>-->
-                <!--<input type="radio" value="MAN" id="addman" name="addsex" ng-checked="true" ng-init="addCustomerSex = 'MAN'" ng-model="addCustomerSex">-->
-                <!--<input type="radio" value="WOMAN" id="addwoman" name="addsex" ng-model="addCustomerSex">-->
-                <!--<label href="javascript:void(0)" class="edit-pt3 pt-cur" for="addman" >男</label>-->
-                <!--<label href="javascript:void(0)" class="edit-pt3 " for="addwoman" >女</label>-->
-            <!--</li>-->
+
             <li>
                 <label>性别</label>
-                <a class="label1">
-                    <input type="radio"  class="checked-none" data-style="checked" value="MAN" ng-checked="true" id="addman" ng-model="addCustomerSex" name="addSex">
-                    <label class="tick pt-cur" for="addman">男</label>
-                </a>
-                <a class="label1">
-                    <input type="radio"  class="checked-none" data-style="checked" value="WOMAN" id="addwoman" ng-model="addCustomerSex" name="addSex">
-                    <label class="tick " for="addwoman">女</label>
-                </a>
+                <span class="label1">
+                    <input type="radio"  class="checked-none" data-style="checked" value="MAN"  id="addman" ng-model="addCustomerSex" name="addSex">
+                    <label class="tick {{addCustomerSex=='MAN'?'pt-cur':''}}" for="addman">男</label>
+                </span>
+
+                <span class="label1">
+                    <input type="radio"  class="checked-none" data-style="checked" value="WOMAN"  id="addwoman" ng-model="addCustomerSex" name="addSex">
+                    <label class="tick  {{addCustomerSex=='WOMAN'?'pt-cur':''}}"  for="addwoman">女</label>
+                </span>
             </li>
             <li>
                 <label>客户类别</label>
-                <select class="selected-same" ng-model="addCustomerType" ng-init="addCustomerType='VIP'" ng-verify="{}">
+                <select class="selected-same" ng-model="addCustomerType" ng-init="addCustomerType='VIP'" >
                     <option value="VIP" >VIP客户</option>
                     <option value="OLD">老客户</option>
                     <option value="COOPERATOR">合作伙伴</option>
@@ -106,7 +101,7 @@
                 <input type="text"  class="edit-pt" placeholder="请输入生活地区（非必填）" ng-model="addLifeArea">
             </li>
             <li>
-                <label>岗位</label>
+                <label>岗位</label> 
                 <input type="text" class="edit-pt" placeholder="请输入岗位（非必填）" ng-model="addWorkPosition">
             </li>
             <li>
