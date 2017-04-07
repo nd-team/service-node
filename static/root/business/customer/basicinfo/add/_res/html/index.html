@@ -113,17 +113,18 @@
 
             </li>
         </ul>
+        <button ng-click="testFun()">test</button>
         <!--拖动-->
-        <div class="User_ratings User_grade" id="div_fraction1">
+        <div class="User_ratings User_grade" id="div_fraction0">
             <div class="ratings_bars">
-                <p id="title1">
+                <p id="title0">
                     <span>0</span>
                 </p>
-                <div class="scale" id="bar1">
-                    <div class="barBox">
-                        <i id="titlex1"></i>
+                <div class="scale" id="bar0">
+                    <div>
+                        <i id="titlex"></i>
                     </div>
-                    <span id="btn1"></span>
+                    <span id="btn0"></span>
                 </div>
             </div>
         </div>
@@ -134,3 +135,40 @@
     </div>
 </div>
 <div id="modulebg"></div>
+
+<script>
+    scale = function (btn, bar, titlex, title) {
+        this.btn = document.getElementById(btn);
+        this.bar = document.getElementById(bar);
+        this.titlex = document.getElementById(titlex);
+        this.title = document.getElementById(title);
+        this.step = this.bar.getElementsByTagName("DIV")[0];
+        this.init();
+    };
+    scale.prototype = {
+        init: function () {
+            var f = this, g = document, b = window, m = Math;
+            f.btn.onmousedown = function (e) {
+                var x = (e || b.event).clientX;
+                var l = this.offsetLeft;
+                var max = f.bar.offsetWidth - this.offsetWidth;
+                g.onmousemove = function (e) {
+                    var thisX = (e || b.event).clientX;
+                    var to = m.min(max, m.max(-2, l + (thisX - x)));
+                    f.btn.style.left = to +8+ 'px';
+                    f.title.style.left = to +8+ 'px';
+                    f.titlex.style.left = to +8+ 'px';
+                    f.ondrag(m.round(m.max(0, to / max) * 100), to);
+                    b.getSelection ? b.getSelection().removeAllRanges() : g.selection.empty();
+                };
+                g.onmouseup = new Function('this.onmousemove=null');
+            };
+        },
+        ondrag: function (pos, x) {
+            this.step.style.width =Math.max(0, x) +8+ 'px';
+            this.title.innerHTML =pos;
+            this.titlex.innerHTML =pos+ '%';
+        }
+    };
+    new scale('btn0', 'bar0','titlex', 'title0');
+</script>

@@ -34,14 +34,12 @@ app.controller('rootCtrl', function ($scope,$rootScope,$state) {
                     rootSer.login(data).then(function(response){
                         console.info(response);
                         if(response.data.code==0){
-                            ipCookie('account', data.account, { expires: 21 });
-                            ipCookie('token',response.data.data,{expires: 21 });
+                            ipCookie('account', data.account);
+                            // ipCookie('token',response.data.data);
                             $scope.closeThisDialog();
                             $rootScope.isLogin = true;
                             $rootScope.userName = data.account
                         }
-
-                        
                     })
                 }
             }
