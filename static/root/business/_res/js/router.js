@@ -6,8 +6,6 @@ app.config(function ($provide, $stateProvider) {
             "content@root": {
                 templateUrl: "root/business/_res/html/index.html",
                 controller: "businessCtrl"
-            },"topNav@root.business":{
-                templateUrl:"root/business/_res/html/topnav.html"
             }
         }
     })
