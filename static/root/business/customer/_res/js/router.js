@@ -9,6 +9,8 @@ app.config(function ($provide, $stateProvider) {
             },"navMenu@root.business": {
                 templateUrl: "root/business/customer/_res/html/navmenu.html",
                 controller:"subNavCtrl"
+            },"topNav@root.business":{
+                templateUrl:"root/business/customer/_res/html/topnav.html"
             }
         }
     })
